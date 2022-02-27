@@ -47,7 +47,16 @@ public class Shipwreck extends UniformStructure<Shipwreck> implements ILoot {
 
 	@Override
 	public int getDecorationSalt() {
-		return 40006;
+		if(getVersion().isNewerOrEqualTo(MCVersion.v1_16)) {
+			return 40006;
+		} else {
+			return 30005;
+		}
+	}
+
+	@Override
+	public boolean shouldAdvanceInChunks() {
+		return !getVersion().isEqualTo(MCVersion.v1_15_2);
 	}
 
 	@Override
